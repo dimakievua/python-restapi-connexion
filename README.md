@@ -42,3 +42,17 @@ $ docker build -t restapi:latest .
 After the build completes, we can run the container:
 $ docker run -d -p 5000:5000 restapi
 
+nose extends the unittest framework. It is not built-in like unittest, that’s why you should install it:
+$ pip install nose app
+
+Together with the nose package and nosetests script will be installed on your machine, used to discover and run tests.
+$ nosetests -v
+
+To measure the code coverage in the Flask application I will use coverage.
+$ pip install coverage
+
+Now that you have it installed, to get the needed measurement data you have to run the following command:
+$ coverage run –source=app_folder_path
+
+To print the prepared report execute:
+$ coverage report 
