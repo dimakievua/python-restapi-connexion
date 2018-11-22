@@ -15,7 +15,7 @@ You should be in application folder running next steps:
 
 In order to use this environment’s packages/resources in isolation, you need to “activate” it. 
 Git-bash:
-$ source env/bin/activate
+$ source env/Scripts/activate
 (env) $
 
 CMD:
@@ -26,7 +26,7 @@ Before we test this, we need to go back to the “system” context by executing
 $
 
 Install flask
-$ pip install flask connexion connexion[swagger-ui]
+$ pip install flask connexion[swagger-ui] nose
 
 Run application
 $ python server.py
@@ -39,11 +39,15 @@ connexion[swagger-ui]==2.0.1
 Build image:
 $ docker build -t restapi:latest .
 
+By default image will be build with ENV=dev to install nore packages. For production please use env=prod
+$ docker build -t restapi:latest --build-args env=prod .
+
 After the build completes, we can run the container:
 $ docker run -d -p 5000:5000 restapi
 
 nose extends the unittest framework. It is not built-in like unittest, that’s why you should install it:
-$ pip install nose app
+$ pip install nose swagger-tester
+
 
 Together with the nose package and nosetests script will be installed on your machine, used to discover and run tests.
 $ nosetests -v

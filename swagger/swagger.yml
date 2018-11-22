@@ -132,3 +132,12 @@ paths:
       responses:
         200:
           description: Successfully deleted a person from people list
+
+  /health:
+    get:
+      tags: [Health]
+      operationId: health.health
+      summary: Health Check
+      responses:
+        '200':
+          description: Status message from server describing current health          
